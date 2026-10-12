@@ -104,3 +104,26 @@ To securely access Amazon S3 from an EC2 instance using an IAM Role without stor
 
 ### Security Learning
 IAM Roles allow EC2 instances to access AWS services using temporary credentials. Read-only permissions allow listing and downloading objects without granting upload permissions.
+
+
+## Task 4: EC2 IAM Role with S3 Read-Only Access
+
+### Objective
+Create an IAM role for EC2 that allows read-only access to the practical S3 bucket.
+
+### Role Details
+- **Role Name:** EC2-S3-ReadOnly-Role
+- **Trusted Entity:** EC2 (`ec2.amazonaws.com`)
+- **Policy Attached:** EC2S3BucketReadPolicy
+- **S3 Bucket:** `tanuja-iam-s3-practical-2026`
+
+### Permissions
+- List objects in the specified S3 bucket.
+- Read and download objects from the specified bucket.
+- Upload and delete permissions are not granted by this policy.
+- No long-term AWS access keys are required for EC2 role access.
+
+### Evidence
+Screenshots are available in `screenshots/Task-4-EC2-IAM-Role/`.
+
+Policy JSON: `policies/EC2S3BucketReadPolicy.json`
