@@ -127,3 +127,25 @@ Create an IAM role for EC2 that allows read-only access to the practical S3 buck
 Screenshots are available in `screenshots/Task-4-EC2-IAM-Role/`.
 
 Policy JSON: `policies/EC2S3BucketReadPolicy.json`
+
+
+## Task 5: IAM Access Testing
+
+### Test Environment
+- **IAM Role:** EC2-S3-ReadOnly-Role
+- **S3 Bucket:** `tanuja-iam-s3-practical-2026`
+
+### Test Results
+
+| Action | Expected Result | Actual Result |
+|---|---|---|
+| List S3 bucket objects | Allowed | Success |
+| Download an existing object | Allowed | Success |
+| Upload an object | Denied | AccessDenied |
+| Delete an object | Denied | Not tested |
+
+### Conclusion
+The EC2 IAM role successfully listed and downloaded an object from the specified S3 bucket. Upload was denied because the role's bucket-specific policy does not grant `s3:PutObject`. Delete access has not been tested yet.
+
+### Evidence
+Screenshots are stored in `screenshots/Task-3-EC2-IAM-Role/` and `screenshots/Task-4-EC2-IAM-Role/`.
