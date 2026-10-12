@@ -136,13 +136,11 @@ Policy JSON: `policies/EC2S3BucketReadPolicy.json`
 - **S3 Bucket:** `tanuja-iam-s3-practical-2026`
 
 ### Test Results
-
-| Action | Expected Result | Actual Result |
-|---|---|---|
-| List S3 bucket objects | Allowed | Success |
-| Download an existing object | Allowed | Success |
-| Upload an object | Denied | AccessDenied |
-| Delete an object | Denied | Not tested |
+Action	Expected Result	Actual Result
+List bucket	Allowed	Success — developer-user
+Download object	Allowed	EC2 role test successful
+Upload object	Denied	Access Denied — developer-user
+Delete object	Denied	Denied
 
 ### Conclusion
 The EC2 IAM role successfully listed and downloaded an object from the specified S3 bucket. Upload was denied because the role's bucket-specific policy does not grant `s3:PutObject`. Delete access has not been tested yet.
