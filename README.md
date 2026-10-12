@@ -33,3 +33,12 @@ This practical will help me understand AWS identity management, permissions, sec
 
 ## Evidence
 Screenshots are organized in the `screenshots/` directory. Policy JSON files are stored in the `policies/` directory.
+
+# AWS IAM and S3 Practical
+
+## Task 1: IAM Users and Groups
+
+### Task 1A: Create IAM User
+- User created: `developer-user`
+- Permissions: No group or policy assigned yet
+- Status: Completed
