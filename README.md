@@ -42,3 +42,65 @@ Screenshots are organized in the `screenshots/` directory. Policy JSON files are
 - User created: `developer-user`
 - Permissions: No group or policy assigned yet
 - Status: Completed
+
+## Task 2: Amazon S3 Bucket and IAM Policies
+
+### Objective
+To create an Amazon S3 bucket and configure IAM policies to control access to S3 resources based on user permissions.
+
+### AWS Services Used
+- Amazon S3
+- AWS IAM
+
+### Implementation
+1. Created an S3 bucket named `tanuja-iam-s3-practical-2026` in the Mumbai (`ap-south-1`) region.
+2. Kept the bucket private by enabling Block Public Access.
+3. Configured bucket ownership with ACLs disabled.
+4. Created a custom IAM policy named `CustomS3ReadPolicy`.
+5. Configured the policy to allow listing the specified S3 bucket and reading its objects.
+6. Attached the required S3 permissions to the appropriate IAM group.
+7. Reviewed the IAM group permissions to understand how AWS controls access to S3 resources.
+
+### Custom Policy Permissions
+The custom policy grants these actions on the project bucket:
+- `s3:ListBucket` — allows listing objects in the bucket.
+- `s3:GetObject` — allows reading and downloading objects.
+
+### Security Best Practices
+- Keep S3 buckets private unless public access is explicitly required.
+- Follow the principle of least privilege by granting only the permissions users need.
+- Use IAM policies to control access to AWS resources.
+- Avoid sharing AWS access keys, secret keys, or sensitive information in GitHub.
+
+### Learning Outcome
+Learned how Amazon S3 stores objects and how IAM policies control access to buckets and objects. Understood the difference between listing a bucket, reading an object, and granting broader S3 permissions.
+
+
+## Task 3: EC2 IAM Role with S3 Read-Only Access
+
+### Objective
+To securely access Amazon S3 from an EC2 instance using an IAM Role without storing AWS access keys on the instance.
+
+### AWS Services Used
+- Amazon EC2
+- AWS IAM
+- Amazon S3
+- AWS CLI
+
+### Implementation
+1. Created an IAM Role named `EC2-S3-ReadOnly-Role`.
+2. Configured EC2 as the trusted service.
+3. Attached the `AmazonS3ReadOnlyAccess` policy.
+4. Attached the IAM Role to the `PRACTICE` EC2 instance.
+5. Installed and configured AWS CLI using the instance role.
+6. Listed S3 buckets and objects from the EC2 terminal.
+7. Downloaded an image from the S3 bucket successfully.
+8. Attempted to upload a file and received `AccessDenied`, as expected for read-only permissions.
+
+### Test Results
+- **List S3 objects:** Successful
+- **Download S3 object:** Successful
+- **Upload S3 object:** Denied as expected
+
+### Security Learning
+IAM Roles allow EC2 instances to access AWS services using temporary credentials. Read-only permissions allow listing and downloading objects without granting upload permissions.
